@@ -1,0 +1,19 @@
+.sec__body { margin-top: clamp(var(--s32), 4vw, var(--s48)); position: relative; z-index: 1; }
+
+/* circuit line primitive */
+.circuit { display: block; width: 100%; height: auto; }
+.circuit .trace { fill: none; stroke: var(--primary); stroke-width: 1.25; }
+.circuit .node { fill: var(--bg-0); stroke: var(--primary); stroke-width: 1.5; }
+.circuit .node--hot { fill: var(--primary); }
+.circuit .flow { stroke-dasharray: 5 5; animation: sigMove 2.4s linear infinite; }
+@keyframes sigMove { to { stroke-dashoffset: -20; } }
+
+/* telemetry value */
+.tval { display: grid; gap: 2px; }
+.tval dt { font-size: 0.66rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
+.tval dd { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.tval dd small { font-size: 0.85rem; font-weight: 500; color: var(--muted); margin-left: 0.25rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .circuit .flow { animation: none; }
+}

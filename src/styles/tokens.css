@@ -1,0 +1,65 @@
+/* ARMTRONIX - dark industrial system. Single source of truth.
+   Palette logic: graphite neutrals + PCB copper. Copper is the colour of the
+   traces and pads on the boards Armtronix ships, so the accent is literally
+   the product. Status colours follow HMI convention and are never decorative:
+   green = running, yellow = caution, red = fault. */
+:root {
+  --bg-0: #0a0c0f;
+  --bg-1: #0f1317;
+  --surface: #14181d;
+  --surface-2: #1a1f25;
+  --line: #2a3037;
+  --line-strong: #3b434c;
+  --line-soft: rgba(42, 48, 55, 0.6);
+
+  --ink: #f3f4f6;
+  --muted: #9199a3;
+  --faint: #78828d;
+
+  /* copper accent */
+  --primary: #e2813b;
+  --primary-hover: #f09856;
+  --primary-rgb: 226, 129, 59;
+  --signal: #f2a263;
+  --primary-ink: #170c04;
+
+  /* gold (ENIG pad finish) - second, rarer accent for highlights on boards */
+  --gold: #d9b45a;
+  --gold-rgb: 217, 180, 90;
+
+  /* HMI status */
+  --ok: #3ddc97;
+  --ok-rgb: 61, 220, 151;
+  --warn: #f5c84c;
+  --warn-rgb: 245, 200, 76;
+  --fault: #ff5c5c;
+  --fault-rgb: 255, 92, 92;
+
+  /* solder-mask board colours (diagram substrates) */
+  --board: #0d1a17;
+  --board-line: #1d3a33;
+
+  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* spacing scale */
+  --s8: 8px;
+  --s16: 16px;
+  --s24: 24px;
+  --s32: 32px;
+  --s48: 48px;
+  --s64: 64px;
+  --s96: 96px;
+  --s128: 128px;
+
+  --maxw: 1480px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --z-nav: 50;
+  --z-drawer: 80;
+}

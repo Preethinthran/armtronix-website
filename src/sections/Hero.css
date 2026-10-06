@@ -1,0 +1,31 @@
+.hero { overflow: hidden; }
+.hero__grid {
+  position: relative; z-index: 1;
+  display: grid; gap: clamp(2.5rem, 5vw, 5rem);
+  grid-template-columns: 1fr 1fr; align-items: center;
+}
+.hero__eyebrow {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 var(--s24);
+  line-height: 1.9;
+}
+.hero__lede { margin-top: var(--s24); }
+.hero__cta { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: var(--s32); }
+.hero__meta { margin-top: var(--s32); padding-top: var(--s16); border-top: 1px solid var(--line-soft); }
+.hero__visual { min-width: 0; }
+.board { width: 100%; height: auto; display: block; overflow: visible; filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45)); }
+
+.board .eg-t.tb { font-size: 10.5px; letter-spacing: 0.05em; }
+
+@media (max-width: 960px) {
+  .hero__grid { grid-template-columns: 1fr; }
+}
+
+/* the board is scaled to ~0.64 on phones: tighten silkscreen type so labels never collide */
+@media (max-width: 640px) {
+  .board .eg-t.sm { font-size: 8.2px; letter-spacing: 0.03em; }
+  .board .eg-t.tb { font-size: 9.5px; letter-spacing: 0.03em; }
+}
+
+/* static drawing: silence the shared library's looping pulse / blink */
+.board .eg-glow, .board .eg-led.blink { animation: none; }

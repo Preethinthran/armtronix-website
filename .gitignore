@@ -1,0 +1,7 @@
+# ---> amd64 goes here
+node_modules/
+dist/
+dist-ssr/
+*.local
+logs/
+.DS_Store

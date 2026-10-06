@@ -1,0 +1,51 @@
+.journey { position: relative; display: grid; }
+.journey__spine {
+  position: absolute; left: 19px; top: 12px; bottom: 12px; width: 2px;
+  background: var(--line);
+}
+.journey__fill { display: block; width: 100%; background: var(--primary); transition: height 0.4s var(--ease); }
+.journey__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s32); }
+.journey__stage {
+  position: relative; display: grid;
+  grid-template-columns: 40px minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(1rem, 3vw, 2.5rem); align-items: center;
+  opacity: 0.55; transition: opacity 0.4s var(--ease);
+}
+.journey__stage.is-active, .journey__stage.is-done { opacity: 1; }
+.journey__node {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: inline-grid; place-items: center;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
+  background: var(--bg-0); border: 2px solid var(--line); color: var(--faint);
+  position: relative; z-index: 1;
+}
+.journey__stage.is-active .journey__node { border-color: var(--primary); color: var(--primary-ink); background: var(--primary); }
+.journey__stage.is-done .journey__node { border-color: var(--ok); color: var(--ok); }
+.journey__body h3 {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.3rem;
+  letter-spacing: -0.01em; text-transform: uppercase;
+}
+.journey__viz {
+  border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-1); padding: 0.75rem;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.journey__stage.is-active .journey__viz {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(var(--primary-rgb), 0.3), 0 0 28px -8px rgba(var(--primary-rgb), 0.45);
+}
+
+/* diagrams stay static: silence any looping animation from shared symbols */
+.journey__viz .eg-led.blink, .journey__viz .eg-glow.pulse, .journey__viz .eg-spin { animation: none; }
+
+/* the trend trace draws itself when its stage powers up */
+.sj-trace.is-on { stroke-dasharray: 1; stroke-dashoffset: 0; animation: sjDraw 2.2s var(--ease) both; }
+@keyframes sjDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+@media (max-width: 860px) {
+  .journey__stage { grid-template-columns: 40px 1fr; }
+  .journey__viz { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sj-trace.is-on { animation: none; }
+  .journey__fill, .journey__viz { transition: none; }
+}

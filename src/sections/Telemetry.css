@@ -1,0 +1,48 @@
+.tele {
+  border: 1px solid var(--line); border-radius: var(--radius-md);
+  background: var(--bg-1); padding: clamp(1.25rem, 3vw, 2.25rem);
+  display: grid; gap: var(--s24);
+}
+.tele__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.tele__grid {
+  display: grid; gap: var(--s16);
+  grid-template-columns: repeat(6, 1fr);
+}
+.tm {
+  border-top: 2px solid var(--line); padding-top: 0.7rem;
+  display: grid; gap: 0.3rem; align-content: start;
+  transition: border-color 0.4s var(--ease);
+}
+.tm:first-child { border-top-color: var(--primary); }
+.tm.is-caution { border-top-color: var(--warn); }
+.tm__val {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.5rem;
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin: 0;
+}
+.tm__val small { font-size: 0.8rem; font-weight: 500; color: var(--muted); margin-left: 0.3rem; }
+
+/* bar gauge: fill = position in range, last 14% = caution zone */
+.tm__bar { position: relative; height: 6px; margin-top: 0.15rem; background: var(--surface-2); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.tm__fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--primary); transition: width 0.8s var(--ease), background 0.4s ease; }
+.tm.is-caution .tm__fill { background: var(--warn); }
+.tm__zone { position: absolute; right: 0; top: 0; bottom: 0; width: 14%; background: repeating-linear-gradient(135deg, rgba(var(--warn-rgb), 0.28) 0 2px, transparent 2px 5px); pointer-events: none; }
+
+.tgraph {
+  width: 100%; height: 220px; display: block;
+  border: 1px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--bg-0); cursor: crosshair; touch-action: pan-y;
+}
+.tgraph:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.tele__foot { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.tele__stamps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; text-align: right; }
+@media (max-width: 1020px) {
+  .tele__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 560px) {
+  .tele__grid { grid-template-columns: repeat(2, 1fr); }
+  .tgraph { height: 170px; }
+  .tele__stamps { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tm, .tm__fill { transition: none; }
+}
